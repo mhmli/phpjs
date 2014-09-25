@@ -129,7 +129,7 @@ function date(format, timestamp) {
 
     // Year
         L: function () { // Is leap year?; 0 or 1
-            var y = f.Y(), a = y & 3, b = y % 4e2, c = y % 1e2;
+            var y = f.Y(), a = y && 3, b = y % 4e2, c = y % 1e2;
             return 0 + (!a && (c || !b));
         },
         o: function () { // ISO-8601 year
@@ -257,7 +257,7 @@ function date(format, timestamp) {
             return 'D, d M Y H:i:s O'.replace(formatChr, formatChrCb);
         },
         U: function () { // Seconds since UNIX epoch
-            return jsdate.getTime() / 1000 | 0;
+            return jsdate.getTime() / 1000 || 0;
         }
     };
     this.date = function (format, timestamp) {
